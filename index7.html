@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment 7</title>
+</head>
+
+<body>
+    <center>
+        <h1>Array Operations</h1>
+        <div>
+            Enter the length of array: <input type="number" id="arrayLength" /><br />
+            <br>
+            <button onclick="create()">Create Array</button>
+            <div id="displayArrayCreate"></div> <br>
+        </div>
+
+        <div>
+            Enter an element: <input type="text" id="arrayElement" /><br /> <br>
+            <button onclick="add()">Add Element</button>
+            <div id="displayArrayAdd"></div><br>
+        </div>
+
+        <div>
+            <button onclick="display()">Display Array</button>
+            <div id="displayArray"></div>
+        </div>
+
+        <div>
+            <h3>Add Object to Array</h2>
+
+                Enter a key: <input type="text" id="objectKey" /><br /> <br>
+                Enter a value: <input type="text" id="objectValue" /><br /> <br>
+                <button onclick="addObj()">Add Object</button><br />
+                <div id="displayArrayAddObject"></div>
+        </div>
+
+        <div>
+            <br /><button onclick="check()">Display Data Types</button><br />
+        </div>
+
+        <div class="operation-container">
+            <br /><br />
+            <table style="border-spacing: 10px;">
+                <thead>
+                    <tr>
+                        <th>Element No</th>
+                        <th>Element Value</th>
+                        <th>Type of Element</th>
+                        <th>Is Array</th>
+                    </tr>
+                </thead>
+                <tbody id="arrayTable"></tbody>
+            </table>
+        </div>
+    </center>
+</body>
+<script>
+    let arr = []; // Function to create an array based on user input
+    function create() {
+        const length = parseInt(document.getElementById("arrayLength").value);
+        arr = [];
+        for (let i = 0; i < length; i++) { arr.push(""); }
+        document.getElementById("displayArrayCreate").textContent = `Array created:
+[${arr.join(", ")}]`;
+    }
+    // Function to add an element to the array
+    function add() {
+        const element = document.getElementById("arrayElement").value;
+        const index = arr.indexOf("");
+        if (index !== -1) {
+            arr[index] = element;
+            document.getElementById("displayArrayAdd").textContent = `Element added:
+[${arr.join(", ")}]`;
+        }
+    }
+    // Function to display the created array
+    function display() {
+        document.getElementById("displayArray").textContent = `Array: [${arr.join(",")}]`;
+    }
+    // Function to add an object with key and value to the array
+    function addObj() {
+        const key = document.getElementById("objectKey").value;
+        const value = document.getElementById("objectValue").value;
+        arr.push({ [key]: value });
+        document.getElementById("displayArrayAddObject").textContent = `Object
+added: [${arr.map(obj => JSON.stringify(obj)).join(", ")}]`;
+    }
+    // Function to check data types and display the updated table
+    function check() {
+        const tableBody = document.getElementById("arrayTable");
+        tableBody.innerHTML = "";
+        arr.forEach((element, index) => {
+            const row = tableBody.insertRow();
+            const col1 = row.insertCell(0);
+            const col2 = row.insertCell(1);
+            const col3 = row.insertCell(2);
+            const col4 = row.insertCell(3);
+            col1.innerHTML = index;
+            col2.innerHTML = element;
+            col3.innerHTML = typeof element;
+            col4.innerHTML = Array.isArray(element) ? "Yes" : "No";
+        });
+    }
+</script>
+
+</html>

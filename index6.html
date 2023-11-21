@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experiment 6</title>
+</head>
+
+<body style=" background-color: #c8e6f3;">
+    <center>
+        <h1>Operations On Array</h1>
+        <br>
+        Enter Length of Array : <input type="number" id="length"> <br> <br>
+        Enter an element: <input type="text" id="element" /><br /> <br>
+        <button onclick="add()">Add Element</button><br> <br>
+        <button onclick="display()">Display Array</button> <br>
+        <div id="output1"></div>
+
+        <h2>Array operations by user defined methods</h2>
+        Delete Element: <input type="text" id="delete1"> <br> <br>
+        <button onclick="del1()">Delete</button> <br>
+        <div id="output2"></div> <br> <br>
+
+        Find Element: <input type="text" id="find1"> <br> <br>
+        <button onclick="find1()">Find</button> <br>
+        <div id="output3"></div> <br>
+
+        <button onclick="empty1()">Empty Array</button>
+        <div id="output4"></div>
+
+        <h2>Array operations using standard methods</h2>
+        Delete Element: <input type="text" id="delete2"> <br> <br>
+        <button onclick="del2()">Delete</button> <br>
+        <div id="output5"></div> <br> <br>
+
+        Find Element: <input type="text" id="find2"> <br> <br>
+        <button onclick="find2()">Find</button> <br>
+        <div id="output6"></div> <br>
+
+        <button onclick="empty2()">Empty Array</button>
+        <div id="output7"></div>
+    </center>
+</body>
+<script>
+
+    var arr = []
+    var length;
+
+    function add() {
+        const element = document.getElementById("element").value;
+        length = parseInt(document.getElementById("length").value);
+        if (arr.length < length) {
+            arr.push(element);
+        } else {
+            alert("Maximum length reached. You can't add more elements.");
+        }
+        document.getElementById("element").value = '';
+    }
+
+    function display() {
+        document.getElementById("output1").textContent = 'Array: ' + arr;
+    }
+
+    //user defined method
+    function del1() {
+        const value = document.getElementById("delete1").value;
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] === value) {
+                arr.splice(i, 1);
+                break;
+            }
+        }
+        document.getElementById("output2").innerHTML = "New Array : " + arr;
+    }
+
+    //standard method
+    function del2() {
+        var value = document.getElementById("delete2").value;
+        var newarr = arr.filter(item => item != value)
+        arr = newarr;
+        document.getElementById("output5").innerHTML = "New Array : " + arr;
+    }
+
+    //user defined method
+    function find1() {
+        const value = document.getElementById("find1").value;
+        let exists = false;
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] === value) {
+                exists = true;
+                break;
+            }
+        }
+        if (exists) {
+            document.getElementById("output3").innerHTML = "Element is present in the array";
+        } else {
+            document.getElementById("output3").innerHTML = "Element not found in the array";
+        }
+
+
+    }
+
+    //standard method
+    function find2() {
+        var value = document.getElementById("find2").value;
+        if (arr.includes(value)) {
+            document.getElementById("output6").innerHTML = "Element is present in the array";
+        } else {
+            document.getElementById("output6").innerHTML = "Element not found in the array";
+        }
+    }
+
+    //user defined method
+    function empty1() {
+        arr.length = 0;
+        document.getElementById("output4").innerHTML = "Array is Empty" + arr;
+    }
+
+    //standard method
+    function empty2() {
+        arr.splice(0, arr.length);
+        document.getElementById("output7").innerHTML = "Array is Empty" + arr;
+    }
+
+</script>
+
+</html>
