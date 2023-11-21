@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Use JS to Find the Area of a Shapes</title>
+    <h2>42277_Yash_Pande</h2>
+  </head>
+
+  <body style="text-align: center; background-color: #fff">
+    <!-- Find the Area of a Triangle -->
+    <h4>Find the Area of a Triangle</h4>
+    <label for="side1"> Enter the value of side 1: </label>
+    <input type="number" id="side1" placeholder="side 1" />
+    <br /><br />
+    <label for="side2"> Enter the value of side 2: </label>
+    <input type="number" id="side2" placeholder="side 2" />
+    <br /><br />
+    <label for="side3"> Enter the value of side 3: </label>
+    <input type="number" id="side3" placeholder="side 3" />
+    <br /><br />
+    <button onclick="Areaoftriangle()">Click Here for Area Of Triangle</button>
+    <p>Area of Triangle: <span id="displayt"></span></p>
+
+    <!-- Find the Area of a Rectangle -->
+    <h4>Find the Area of a Rectangle</h4>
+    <label for="length"> Enter the value of length: </label>
+    <input type="number" id="length" placeholder="length" />
+    <br /><br />
+    <label for="breadth"> Enter the value of breadth: </label>
+    <input type="number" id="breadth" placeholder="breadth" />
+    <br /><br />
+    <button onclick="Areaofrectangle()">
+      Click Here For Area Of Rectangle
+    </button>
+    <p>Area of Rectangle: <span id="displayr"></span></p>
+
+    <!-- Find the Area of a Circle -->
+
+    <h4>Find the Area of a Circle</h4>
+    <label for="radius"> Enter the value of radius: </label>
+    <input type="number" id="radius" placeholder="radius" />
+    <br /><br />
+    <button onclick="Areaofcircle()">Click Here For Area Of circle</button>
+    <p>Area of Circle: <span id="displayc"></span></p>
+    <script>
+      // Find the Area of a Triangle
+      function Areaoftriangle() {
+        var side1 = parseInt(document.getElementById("side1").value);
+        var side2 = parseInt(document.getElementById("side2").value);
+        var side3 = parseInt(document.getElementById("side3").value);
+        console.log(typeof side1);
+        var s = (side1 + side2 + side3) / 2;
+        var Areaoft = Math.sqrt(s * ((s - side1) * (s - side2) * (s - side3)));
+        document.getElementById("displayt").innerHTML = Areaoft;
+      }
+
+      // Find the Area of a Rectangle
+      function Areaofrectangle() {
+        var length = parseInt(document.getElementById("length").value);
+        var breadth = parseInt(document.getElementById("breadth").value);
+
+        console.log(typeof length);
+        var Areaofr = length * breadth;
+        document.getElementById("displayr").innerHTML = Areaofr;
+      }
+
+      // Find the Area of a Circle
+      function Areaofcircle() {
+        var radius = parseInt(document.getElementById("radius").value);
+        console.log(typeof radius);
+        var Areaofc = Math.PI * radius * radius;
+        document.getElementById("displayc").innerHTML = Areaofc;
+      }
+    </script>
+  </body>
+</html>

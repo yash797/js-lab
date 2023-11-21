@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>JS EXP 4</title>
+    <h5>42277: Yash Pande</h5>
+  </head>
+
+  <body
+    style="text-align: center; color: rgb(0, 0, 0); background-color: #ffffff"
+  >
+    <h1 style="text-align: center">Compare Strings</h1>
+    <label for="string1">Enter string 1:</label>
+    <input type="text" id="str1" />
+    <br /><br />
+
+    <label for="string2">Enter string 2:</label>
+    <input type="text" id="str2" />
+    <br /><br />
+
+    <p>
+      String Comparison Using Character Comparison and "==" :
+      <span id="display1"></span>
+    </p>
+    <button onclick="method1()">Compare Strings</button><br /><br />
+
+    <p>String Comparison Using "===" operator : <span id="display2"></span></p>
+    <button onclick="method2()">Compare Strings</button><br /><br />
+
+    <p>String Comparison Using Local Compare : <span id="display3"></span></p>
+    <button onclick="method3()">Compare Strings</button><br /><br />
+    <p>
+      String Comparison Using Regex and Lowercase Comparison:
+      <span id="display4"></span>
+    </p>
+    <button onclick="method4()">Compare Strings</button><br /><br />
+
+    <script>
+      function method1() {
+        console.log("M1");
+        let s1 = "true";
+        s1 = document.getElementById("str1").value;
+        let s2 = "true";
+        s2 = document.getElementById("str2").value;
+
+        var a = s1.length;
+        var b = s2.length;
+        if (a == b) {
+          var i,
+            f = 1;
+          for (i = 0; i < a; i++) {
+            if (s1.charAt(i) != s2.charAt(i)) {
+              f = 0;
+            }
+          }
+          if (f == 1) document.getElementById("display1").innerHTML = "true";
+          else document.getElementById("display1").innerHTML = "false";
+        } else document.getElementById("display1").innerHTML = "false";
+      }
+
+      function method2() {
+        var str1 = document.getElementById("str1").value;
+        var str2 = document.getElementById("str2").value;
+        console.log(str1);
+        console.log(str2);
+
+        let val = str1 === str2;
+
+        let s = val.toString();
+        console.log(s);
+        document.getElementById("display2").innerHTML = s;
+      }
+
+      function method3() {
+        var str1 = document.getElementById("str1").value;
+        var str2 = document.getElementById("str2").value;
+
+        let val = str1.localeCompare(str2);
+        let s = val.toString();
+        console.log(s);
+        document.getElementById("display3").innerHTML =
+          s == 0 ? "true" : "false";
+      }
+
+      function method4() {
+        var str1 = document.getElementById("str1").value;
+        var str2 = document.getElementById("str2").value;
+
+        // Convert the input strings to lowercase
+        str1 = str1.toLowerCase();
+        str2 = str2.toLowerCase();
+
+        // Define a regular expression to match the strings
+        var regex = new RegExp("^" + str1 + "$");
+
+        // Test if str2 matches the regular expression
+        var result = regex.test(str2);
+
+        document.getElementById("display4").innerHTML = result
+          ? "true"
+          : "false";
+      }
+    </script>
+  </body>
+</html>

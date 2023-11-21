@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Countdown Timer</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+  </head>
+  <body style="text-align: center">
+    <h2>Countdown Timer</h2>
+    <h2>42277: Yash Pande</h2>
+    <h3>Set a Countdown Deadline:</h3>
+    <input type="datetime-local" id="deadlineInput" />
+    <button id="startButton">Start Countdown</button>
+    <h3 id="demo"></h3>
+    <h4>Countdown</h4>
+    <script>
+      document
+        .getElementById("startButton")
+        .addEventListener("click", startCountdown);
+
+      function startCountdown() {
+        var deadlineInput = document.getElementById("deadlineInput").value;
+        var deadline = new Date(deadlineInput).getTime();
+        if (isNaN(deadline)) {
+          alert("Please enter a valid date and time.");
+          return;
+        }
+        var x = setInterval(function () {
+          var now = new Date().getTime();
+          var t = deadline - now;
+          var days = Math.floor(t / (1000 * 60 * 60 * 24));
+          var hours = Math.floor(
+            (t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+          );
+          var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((t % (1000 * 60)) / 1000);
+          document.getElementById("demo").innerHTML =
+            days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+          if (t < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "Expired";
+          }
+        }, 1000);
+      }
+    </script>
+  </body>
+</html>
+
+
+<!-- For 2 dates
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Countdown Timer</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+  </head>
+  <body style="text-align: center">
+    <h2>Countdown Timer</h2>
+    <h2>42277: Yash Pande</h2>
+    <h3>Set Countdown Dates:</h3>
+    <label for="startDateInput">Start Date:</label>
+    <input type="datetime-local" id="startDateInput" />
+    <br />
+    <label for="endDateInput">End Date:</label>
+    <input type="datetime-local" id="endDateInput" />
+    <br />
+    <button id="startButton">Start Countdown</button>
+    <h3 id="demo"></h3>
+    <h4>Countdown</h4>
+    <script>
+      document.getElementById("startButton").addEventListener("click", startCountdown);
+
+      function startCountdown() {
+        var startDateInput = document.getElementById("startDateInput").value;
+        var endDateInput = document.getElementById("endDateInput").value;
+
+        var startDate = new Date(startDateInput).getTime();
+        var endDate = new Date(endDateInput).getTime();
+
+        if (isNaN(startDate) || isNaN(endDate)) {
+          alert("Please enter valid start and end dates.");
+          return;
+        }
+
+        var x = setInterval(function () {
+          var now = new Date().getTime();
+          var t = endDate - now;
+
+          var days = Math.floor(t / (1000 * 60 * 60 * 24));
+          var hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+          var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60));
+          var seconds = Math.floor((t % (1000 * 60)) / 1000);
+
+          document.getElementById("demo").innerHTML =
+            days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+
+          if (t < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "Expired";
+          }
+        }, 1000);
+      }
+    </script>
+  </body>
+</html> -->
+

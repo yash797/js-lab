@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      text-align: center;
+    }
+    .container {
+      width: 50%;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+    .form-group input[type="text"],
+    .form-group select {
+      width: 100%;
+      padding: 5px;
+      border: 1px solid #ccc;
+    }
+    .error-message {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div>
+      <h3>Name: Yash Pande</h3>
+      <h3>Roll Number: 42277</h3>
+      <h3>Batch: S6</h3>
+    </div>
+    <br /><br />
+    <form action="submit.html" name="StudentRegistration" onsubmit="return validate();">
+      <div class="form-group">
+        <label for="fname">First Name</label>
+        <input type="text" name="fname" id="fname" />
+        <p class="error-message" id="display_fname"></p>
+      </div>
+      <div class="form-group">
+        <label for="lname">Last Name</label>
+        <input type="text" name="lname" id="lname" />
+        <p class="error-message" id="display_lname"></p>
+      </div>
+      <div class="form-group">
+        <label for="emailid">Email</label>
+        <input type="text" name="emailid" id="emailid" />
+        <p class="error-message" id="display_email"></p>
+      </div>
+      <div class="form-group">
+        <label for="mobileno">Mobile No</label>
+        <input type="text" name="mobileno" id="mobileno" />
+        <p class="error-message" id="display_no"></p>
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" name="city" id="city" />
+        <p class "error-message" id="display_city"></p>
+      </div>
+      <div class="form-group">
+        <label for="State">State</label>
+        <input type="text" name="State" id="State" />
+        <p class="error-message" id="display_state"></p>
+      </div>
+      <div class="form-group">
+        <label for="Gender">Gender</label>
+        <select name="Gender" id="Gender">
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="other">Other</option>
+          <option value="not_specified">Don't want to specify</option>
+        </select>
+        <p class="error-message" id="display_gen"></p>
+      </div>
+      <div class="form-group">
+        <label for="Address">Address</label>
+        <input type="text" name="Address" id="Address" />
+        <p class="error-message" id="display_add"></p>
+      </div>
+      <div class="form-group">
+        <input type="reset">
+        <input type="submit" value="Submit Form" />
+        <p class="error-message" id="display_status"></p>
+      </div>
+    </form>
+  </div>
+  <script>
+    function validate() {
+      var fname = document.getElementById("fname");
+      var lname = document.getElementById("lname");
+      var email = document.getElementById("emailid");
+      var mobileno = document.getElementById("mobileno");
+      var city = document.getElementById("city");
+      var State = document.getElementById("State");
+      var Gender = document.getElementById("Gender");
+      var Address = document.getElementById("Address");
+      var display_status = document.getElementById("display_status");
+      display_status.innerHTML = "";
+      var isValid = true;
+      function containsSpecialCharsOrNumbers(input) {
+        var pattern = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?1234567890]/;
+        return pattern.test(input);
+      }
+      if (fname.value.trim() === "" || containsSpecialCharsOrNumbers(fname.value)) {
+        document.getElementById("display_fname").innerHTML = "Please provide a valid first name without special characters or numbers!";
+        fname.focus();
+        isValid = false;
+      } else {
+        document.getElementById("display_fname").innerHTML = "";
+      }
+      if (lname.value.trim() === "") {
+        document.getElementById("display_lname").innerHTML = "Please provide your last Name!";
+        lname.focus();
+        isValid = false;
+      } else {
+        document.getElementById("display_lname").innerHTML = "";
+      }
+      var emailValue = email.value.trim();
+      var atpos = emailValue.indexOf("@");
+      var dotpos = emailValue.lastIndexOf(".");
+      if (emailValue === "" || atpos < 1 || dotpos - atpos < 2 || emailValue.length - dotpos !== 4) {
+        document.getElementById("display_email").innerHTML = "Please enter a correct email ID";
+        email.focus();
+        isValid = false;
+      } else {
+        document.getElementById("display_email").innerHTML = "";
+      }
+      var mobilenoValue = mobileno.value.trim();
+      if (mobilenoValue === "") {
+        document.getElementById("display_no").innerHTML = "Please provide your Mobile No!";
+        mobileno.focus();
+        isValid = false;
+      } else if (isNaN(mobilenoValue) || mobilenoValue.length !== 10) {
+        document.getElementById("display_no").innerHTML = "Please enter a valid 10-digit mobile number";
+        mobileno.focus();
+        isValid = false;
+      } else {
+        document.getElementById("display_no").innerHTML = "";
+      }
+      if (city.value.trim() === "") {
+        document.getElementById("display_city").innerHTML = "Please provide the name of the city!";
+        city.focus();
+        isValid = false;
+      } else {
+        document.getElementById("display_city").innerHTML = "";
+      }
+      if (State.value.trim() === "") {
+        document.getElementById("display_state").innerHTML = "Please provide the name of the State!";
+        State.focus();
+        isValid = false;
+      } else {
+        document.getElementById("display_state").innerHTML = "";
+      }
+      if (Gender.value === "not_specified") {
+        document.getElementById("display_gen").innerHTML = "Please select a valid gender!";
+        Gender.focus();
+        isValid = false;
+      } else {
+        document.getElementById("display_gen").innerHTML = "";
+      }
+      if (Address.value.trim() === "") {
+        document.getElementById("display_add").innerHTML = "Please provide your address!";
+        Address.focus();
+        isValid = false;
+      } else {
+        document.getElementById("display_add").innerHTML = "";
+      }
+      return isValid;
+    }
+  </script>
+</body>
+</html>

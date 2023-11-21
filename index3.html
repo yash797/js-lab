@@ -1,0 +1,80 @@
+<html>
+  <head>
+    <title>String operations</title>
+    <body style="text-align: center">
+        <h2>42277: Yash Pande</h2>
+        <h3>Expt-3: String Manipulation</h3>
+      <label for="reverse"> Enter the string: </label>
+      <input type="text" id="1" />
+      <br /><br />
+      <button onclick="reverseString()">Reverse String</button>
+      <p>Reversed string is:<span id="display1"></span></p>
+      <br />
+
+      <label for="palindrome"> Enter the string: </label>
+      <input type="text" id="2" />
+      <br /><br />
+      <button onclick="isPalindrome()">Check Palindrome</button>
+      <p>
+        Result:
+        <span id="display2"></span>
+      </p>
+      <br />
+
+      <label for="Replace"> Enter the string: </label>
+      <input type="text" id="3" />
+      <br /><br />
+      <label for="Replacewhat">
+        Enter the string that you want to replace:
+      </label>
+      <input type="text" id="4" />
+      <br /><br />
+      <label for="Replacewith">
+        Enter the string that you want to replace with:
+      </label>
+      <input type="text" id="5" />
+      <br /><br />
+      <button onclick="replace()">Replace</button>
+      <p>
+        Result:
+        <span id="display3"></span>
+      </p>
+      <script>
+        function reverseString(str) {
+          let s = "";
+          var str = document.getElementById("1").value;
+
+          for (let i = str.length - 1; i >= 0; i--) {
+            s += str[i];
+          }
+          console.log(str);
+          document.getElementById("display1").innerHTML = s;
+        }
+
+        function isPalindrome(str) {
+          let s = "";
+          let res = "";
+          var str = document.getElementById("2").value;
+
+          for (let i = str.length - 1; i >= 0; i--) {
+            s += str[i];
+          }
+          if (s == str) {
+            res = "String is Palindrome!";
+          } else {
+            res = "String is not Palindrome!";
+          }
+          document.getElementById("display2").innerHTML = res;
+        }
+
+        function replace(str) {
+          var str = document.getElementById("3").value;
+          var replacewhat = document.getElementById("4").value;
+          var replacewith = document.getElementById("5").value;
+          var newstr = str.replace(replacewhat, replacewith);
+          document.getElementById("display3").innerHTML = newstr;
+        }
+      </script>
+    </body>
+  </head>
+</html>
