@@ -1,3 +1,6 @@
+Over the past year, I have contributed to several key initiatives such as Carbon Migration, MQ V9 Update, AAF API Onboarding (Agora Portal), UKPB Entitlement Enhancements, and multiple API Migrations. My work has involved end-to-end ownership across development, testing, and release activities, ensuring all deliverables were completed on time with strong focus on quality, compliance, and reliability.
+Below is a brief summary of my key contributions and achievements aligned with the goals defined for this review period.
+
 Risk & Compliance (Mandatory)
 
 - Completed all mandatory trainings on time and consistently applied HSBC’s risk and control framework.
